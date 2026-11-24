@@ -36,3 +36,15 @@ desktop.ini
 # Datos y archivos temporales
 *.tmp
 *.bak
+
+# Bases de datos SQLite
+data/*.db
+data/*.db-*
+data/*.sqlite
+data/*.sqlite3
+
+# Docker
+.docker/
+
+# Archivos de auditoría
+auditoria-final.txt

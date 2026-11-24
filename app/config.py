@@ -1,8 +1,10 @@
 ﻿from functools import lru_cache
 from pathlib import Path
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
@@ -16,7 +18,7 @@ class Settings(BaseSettings):
     debug: bool = True
 
     google_api_key: str = ""
-    gemini_model: str = "gemini-3.8-flash"
+    gemini_model: str = "gemini-3.5-flash-lite"
     gemini_embedding_model: str = "gemini-embedding-001"
     embedding_dimension: int = 768
 
@@ -26,11 +28,15 @@ class Settings(BaseSettings):
 
     database_path: str = str(BASE_DIR / "data" / "memory.db")
 
-    phoenix_collector_endpoint: str = "http://localhost:6006"
-    phoenix_project_name: str = "the-intelligence-system"
+    langsmith_tracing: bool = True
+    langsmith_api_key: str = ""
+    langsmith_project: str = "the-intelligence-system"
+    langsmith_endpoint: str = "https://api.smith.langchain.com"
+
 
 @lru_cache
-def get_settings():
+def get_settings() -> Settings:
     return Settings()
+
 
 settings = get_settings()

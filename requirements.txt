@@ -4,14 +4,12 @@ pydantic-settings
 python-dotenv
 
 langgraph
+langgraph-checkpoint-sqlite
 langchain-google-genai
+google-genai
 
 pinecone
-langgraph-checkpoint-redis
-redis
-
-arize-phoenix
-openinference-instrumentation-langchain
+langsmith
 
 pytest
 pytest-asyncio

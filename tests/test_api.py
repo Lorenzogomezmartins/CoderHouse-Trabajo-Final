@@ -1,5 +1,4 @@
-﻿import pytest
-from fastapi.testclient import TestClient
+﻿from fastapi.testclient import TestClient
 
 from app.main import app
 
@@ -14,6 +13,10 @@ class FakeGraph:
         }
 
 
+async def fake_execute_graph(state, config):
+    return await app.state.graph.ainvoke(state, config)
+
+
 def test_health_endpoint():
     with TestClient(app) as client:
         response = client.get("/health")
@@ -25,6 +28,7 @@ def test_health_endpoint():
 def test_query_endpoint_returns_valid_response():
     with TestClient(app) as client:
         client.app.state.graph = FakeGraph()
+        client.app.state.execute_graph = fake_execute_graph
 
         response = client.post(
             "/query",
