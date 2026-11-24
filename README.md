@@ -4,7 +4,7 @@ Sistema multiagente con RAG híbrido, revisión humana (HITL), memoria persisten
 
 ## Requisitos
 
-- Python 3.12+
+- Python 3.12 o superior. Probado en local con Python 3.14 y en el contenedor Docker con Python 3.12.
 - Docker Desktop (para el despliegue con Docker Compose)
 - Cuentas y claves de: Google AI (Gemini), Pinecone y LangSmith
 
